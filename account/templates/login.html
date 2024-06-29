@@ -1,0 +1,34 @@
+{% extends 'base.html' %}
+
+{% block title %}Login{% endblock %}
+
+{% block content %}
+<div class="row justify-content-center">
+    <div class="col-lg-6">
+        <h2>Inicio de Sesión</h2>
+
+        {% if form.errors  %}
+
+        <p> Tu nombre de usuario y contraseña no coinciden, por favor intenta nuevamente </p>
+
+        {% else %}
+
+        <p> Si aún no tienes una cuenta, puedes <a href={% url "registro" %}>registrarte aquí</a></p>
+        {% endif %}
+ 
+        <div>
+            <form action="{% url 'login' %}" method="post">
+                {{ form.as_p }}
+                {% csrf_token %}
+                <input type="hidden"  name="next" value="{{ next }}"/>
+                <p><button type="submit" class="btn btn-success">Entrar</button></p>
+            </form>
+        </p>
+        
+        <p>
+           
+        </p>
+        </div>
+    </div>
+</div>
+{% endblock %}
